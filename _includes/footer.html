@@ -4,16 +4,11 @@
   <div class="wrapper">
 
     <h2 class="footer-heading">{{ site.title | escape }}</h2>
-    <ul class="information-list">
-            {%- if site.discord -%}
-            <li>Discord: <a class="u-discord" href="mailto:{{ site.discord | escape }}">{{ site.discord | escape }}</a></li>
-            {%- endif -%}
-        </ul>
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="information-list">
             {%- if site.discord -%}
-            <li>Discord: <a class="u-discord" href="mailto:{{ site.discord | escape }}">{{ site.discord | escape }}</a></li>
+            <p>Discord: <a class="u-discord" href="mailto:{{ site.discord | escape }}">{{ site.discord | escape }}</a></p>
             {%- endif -%}
         </ul>
       </div>
