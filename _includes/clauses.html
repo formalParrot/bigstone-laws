@@ -1,0 +1,9 @@
+<ul>
+  {% assign children = site.clauses | where: "parent", include.parent %}
+  {% for clause in children %}
+    <li>
+      <a href="{{ clause.url }}">{{ clause.short }}</a>
+      {% include subclauses.html parent=clause.path %}
+    </li>
+  {% endfor %}
+</ul>

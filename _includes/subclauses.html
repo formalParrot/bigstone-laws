@@ -1,0 +1,11 @@
+<li>
+  <a href="{{ clause.url }}">{{ clause.title }}</a>
+  {% assign subs = site.sub_sub_clauses | where: "parent", clause.slug %}
+  {% if subs.size > 0 %}
+    <ol type="i">
+      {% for subsub in subs %}
+        <li><a href="{{ subsub.url }}">{{ subsub.title }}</a></li>
+      {% endfor %}
+    </ol>
+  {% endif %}
+</li>

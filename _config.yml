@@ -30,6 +30,20 @@ repository: artem22102013/bigstone-laws
 theme: minima
 plugins:
 
+#Collections
+collections:
+  laws:
+    output: true
+    permalink: /laws/:law/
+  clauses:
+    output: true
+    permalink: /laws/:law/
+  subclauses:
+    output: true
+    permalink: /laws/:law/
+
+
+
 # Exclude from processing.
 # The following items will not be processed, by default.
 # Any item listed under the `exclude:` key here will be automatically added to

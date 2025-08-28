@@ -1,0 +1,11 @@
+<li>
+  <a href="{{ law.url }}">{{ law.title }}</a>
+  {% assign sub_clauses = site.sub_clauses | where: "parent", law.slug %}
+  {% if sub_clauses.size > 0 %}
+    <ol type="a">
+      {% for sub in sub_clauses %}
+        {% include sub_clause.html clause=sub %}
+      {% endfor %}
+    </ol>
+  {% endif %}
+</li>
