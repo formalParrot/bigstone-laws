@@ -1,0 +1,29 @@
+- name: aFormalParrot
+  username: CrazyDuck24
+  description: Keeper of the courthouse, maker of website
+  avatar: https://cdn.discordapp.com/avatars/1008254028649607249/a01a7bb3544fbca364d3fd6441547789.png?size=160
+
+- name: MineKey98
+  username: MineKey94
+  description: Co-Builder of courthouse, maintainer of Bigstone Dev's weekly competitions.
+  avatar: https://cdn.discordapp.com/avatars/783091835295105055/967bea8289107cedd8543321771d5204.png?size=160
+
+- name: cal
+  username: Codeapotamus
+  description: Co-Builder of courthouse, maintainer of Bigstone Dev's weekly competitions.
+  avatar: assets/images/discord_cal.png
+
+- name: BastienA
+  username: BastienA
+  description: Co-Builder of courthouse, has many cool things at his plot.
+  avatar: https://cdn.discordapp.com/avatars/639413750893379595/0fa335b98f4d6af2391a061006a5faeb.png?size=64
+
+- name: Huckle
+  username: "TheHuckle; h2bi"
+  description: built the ceiling for courthouse. that's about it.
+  avatar: https://cdn.discordapp.com/avatars/554368136552644638/94ed368717742f0cce315f2315d550e6.png?size=160
+
+- name: LimeLight
+  username: B747_8i
+  description: built the ceiling for courthouse with huckle.
+  avatar: https://cdn.discordapp.com/avatars/942397551167016960/c3834d2790a62f6abcddd7eddea0c076.png?size=160
