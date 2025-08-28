@@ -1,0 +1,7 @@
+file name : .md
+
+---
+title: CLAUSE NAME
+layout: clause
+law: LAW FILENAME
+---

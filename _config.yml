@@ -31,16 +31,17 @@ theme: minima
 plugins:
 
 #Collections
+# _config.yml
 collections:
   laws:
     output: true
-    permalink: /laws/:law/
+    permalink: /laws/:name/
   clauses:
     output: true
-    permalink: /laws/:law/
+    permalink: /laws/clauses/:name/
   subclauses:
     output: true
-    permalink: /laws/:law/
+    permalink: /laws/clauses/subclauses/:name/
 
 
 

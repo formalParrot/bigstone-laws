@@ -1,0 +1,31 @@
+---
+layout: default
+---
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">
+      {% if page.law and page.clause %}
+        Part of: 
+        <a href="{{ '/laws/' | append: page.law | relative_url }}">{{ page.law | replace: '-', ' ' | capitalize }}</a> 
+        → 
+        <a href="{{ '/laws/clauses/' | append: page.clause | relative_url }}">{{ page.clause | replace: '-', ' ' | capitalize }}</a>
+      {% endif %}
+    </p>
+  </header>
+
+  <article class="post-content">
+    {{ content }}
+
+    <p>
+      {% if page.law and page.clause %}
+        <a href="{{ '/laws/clauses/' | append: page.clause | relative_url }}">← Back to {{ page.clause | replace: '-', ' ' | capitalize }}</a> |
+      {% endif %}
+      {% if page.law %}
+        <a href="{{ '/laws/' | append: page.law | relative_url }}">← Back to {{ page.law | replace: '-', ' ' | capitalize }}</a> |
+      {% endif %}
+      <a href="{{ '/laws/' | relative_url }}">← Back to all laws</a>
+    </p>
+  </article>
+</div>

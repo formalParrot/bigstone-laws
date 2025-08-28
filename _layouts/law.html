@@ -1,0 +1,46 @@
+---
+layout: default
+---
+
+<div class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+  </header>
+
+  <article class="post-content">
+    {{ content }}
+
+    {% assign law_clauses = site.clauses | where: "law", page.slug %}
+    {% if law_clauses.size > 0 %}
+      <h2>Clauses</h2>
+      <ol type="a">
+        {% for clause in law_clauses %}
+          <li>
+            {% if clause.url %}
+              <a href="{{ clause.url | relative_url }}">{{ clause.title }}</a>
+            {% else %}
+              {{ clause.title }} (Link Error: Missing Clause URL)
+            {% endif %}
+
+            {% assign clause_subclauses = site.subclauses | where: "law", page.slug | where: "clause", clause.slug %}
+            {% if clause_subclauses.size > 0 %}
+              <ol type="i">
+                {% for subclause in clause_subclauses %}
+                  <li>
+                    {% if subclause.url %}
+                      <a href="{{ subclause.url | relative_url }}">{{ subclause.title }}</a>
+                    {% else %}
+                      {{ subclause.title }} (Link Error: Missing Subclause URL)
+                    {% endif %}
+                  </li>
+                {% endfor %}
+              </ol>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ol>
+    {% endif %}
+
+    <p><a href="{{ '/laws/' | relative_url }}">← Back to all laws</a></p>
+  </article>
+</div>
