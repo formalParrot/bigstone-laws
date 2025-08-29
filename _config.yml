@@ -25,7 +25,7 @@ discord: "https://discord.gg/MZ7hBU7GVV"
 
 law-application: "https://forms.gle/j8rxPPrwpbx6UVBWA"
 
-baseurl: "/bigstone-laws/" # the subpath of your site, e.g. /blog
+baseurl: "/bigstone-laws" # the subpath of your site, e.g. /blog
 url: "artem22102013.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 repository: artem22102013/bigstone-laws
 
@@ -36,6 +36,7 @@ plugins:
 #Collections
 # _config.yml
 collections:
+  # Law Collection
   laws:
     output: true
     permalink: /laws/:name/
@@ -45,6 +46,12 @@ collections:
   subclauses:
     output: true
     permalink: /laws/clauses/subclauses/:name/
+
+  # Case Collection
+  cases:
+    output: true
+    permalink: /cases/:name/
+  
 
 # Exclude from processing.
 # The following items will not be processed, by default.

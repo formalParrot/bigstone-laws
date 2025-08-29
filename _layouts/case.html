@@ -1,0 +1,77 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <h1 class="post-title">{{ page.title }}</h1>
+    <p class="post-meta">Filed: {{ page.date | date: "%B %d, %Y" }}</p>
+    <p><strong>Final Verdict:</strong> {% if page.verdict %}{{ page.verdict }}{% else %}Undefined{% endif %}</p>
+  </header>
+
+  <section class="post-content">
+
+    <h2>⚖️ Case Overview</h2>
+    <p><strong>Judge:</strong> {{ page.judge }}</p>
+    <p><strong>Jury:</strong> {% if page.jury %}{{ page.jury | join: ", " }}{% else %}None{% endif %}</p>
+
+    <h2>Parties</h2>
+    <p><strong>Plaintiff:</strong> {{ page.plaintiff }} (Attorney: {{ page.plaintiff_attorney | default: "None" }})</p>
+    <p><strong>Defendant:</strong> {{ page.defendant }} (Attorney: {{ page.defendant_attorney | default: "None" }})</p>
+
+    <h2>Description of Issue</h2>
+    <ul>
+      <li><strong>What:</strong> {{ page.description_what }}</li>
+      <li><strong>When:</strong> {{ page.description_when }}</li>
+      <li><strong>Where:</strong> {{ page.description_where }}</li>
+    </ul>
+
+    <h2>Reason</h2>
+    <p>{{ page.reason }}</p>
+
+    <h2>Requested Outcome</h2>
+    <p>{{ page.outcome }}</p>
+
+    {% if page.witnesses %}
+      <h2>Witnesses</h2>
+      <ul>
+        {% for w in page.witnesses %}
+          <li>{{ w }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if page.evidence %}
+      <h2>Evidence</h2>
+      <ul>
+        {% for e in page.evidence %}
+          <li>
+            {% if e contains ".png" or e contains ".jpg" or e contains ".jpeg" or e contains ".gif" %}
+                <a href="{{ e | prepend: site.baseurl }}" target="_blank">
+                    {{ e | split: "/" | last }}
+                </a>
+            {% else %}
+                <a href="{{ e | prepend: site.baseurl }}" target="_blank">
+                    {{ e | split: "/" | last }}
+                </a>
+            {% endif %}
+
+          </li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if content != "" %}
+        <div class="proceedings">
+            {{ content }}
+        </div>
+    {% endif %}
+
+
+    {% if page.notes %}
+      <h2>Additional Notes</h2>
+      <p>{{ page.notes }}</p>
+    {% endif %}
+
+  </section>
+</article>

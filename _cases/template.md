@@ -1,0 +1,67 @@
+---
+layout: case
+title: "Case Title Here"
+date: 2025-08-29
+
+# Verdict (appears at the top, default: Undefined)
+verdict: ""
+
+# Court
+judge: ""
+jury:
+  - ""
+
+# Parties
+plaintiff: ""
+plaintiff_attorney: ""
+defendant: ""
+defendant_attorney: ""
+
+# Description
+description_what: ""
+description_when: ""
+description_where: ""
+
+# Reason
+reason: ""
+
+# Requested Outcome
+outcome: ""
+
+# Witnesses
+witnesses:
+  - ""
+
+# Evidence (put files in /assets/images/cases/{case_name}/)
+evidence:
+  - "/assets/images/cases/{case_name}/example.png"
+
+# Extra
+notes: ""
+---
+
+## Court Proceedings
+
+Write everything that happened during the trial here.  
+You can use **Markdown formatting**:  
+
+- Lists of events  
+- **Bold** or *italic* text  
+- Links, code blocks, or any standard Markdown  
+
+Example:
+
+- Plaintiff presented evidence of TNT destruction.
+- Witnesses PlayerA and PlayerB testified.
+- Defendant apologized but denied intentional griefing.
+
+---
+
+## Judge Remarks
+
+Write the judge’s comments, instructions, or final observations here.  
+You can also use Markdown formatting:
+
+- Notes about fairness of proceedings
+- References to server rules
+- Any additional instructions or warnings
