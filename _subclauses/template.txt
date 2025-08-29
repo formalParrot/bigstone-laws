@@ -1,8 +1,0 @@
-file name: .md
-
----
-title: SUBCLAUSE NAME
-layout: subclause
-law: LAW FILENAME
-clause: CLAUSE FILENAME
----
