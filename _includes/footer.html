@@ -5,12 +5,15 @@
 
     <h2 class="footer-heading">{{ site.title | escape }}</h2>
     <div class="footer-col-wrapper">
-      <div class="footer-col footer-col-1">
-        <ul class="information-list">
-            {%- if site.discord -%}
-            <p>Discord: <a class="u-discord" href="mailto:{{ site.discord | escape }}">{{ site.discord | escape }}</a></p>
-            {%- endif -%}
-        </ul>
+
+      <div class="footer-col footer-col-3" style="display: flex; justify-content: flex-end; flex-direction: column; gap: 0.5em;">
+        {%- if site.discord -%}
+          <p>Discord: <a class="u-discord" href="{{ site.discord }}">{{ site.discord }}</a></p>
+        {%- endif -%}
+
+        {%- if site.law-application -%}
+          <p>Want to suggest a law? <a href="{{ site.law-applications }}" target="_blank">Submit it here</a></p>
+        {%- endif -%}
       </div>
 
       <div class="footer-col footer-col-2">
@@ -20,8 +23,7 @@
       <div class="footer-col footer-col-3">
         <p>{{- site.description | escape -}}</p>
       </div>
+
     </div>
-
   </div>
-
 </footer>
