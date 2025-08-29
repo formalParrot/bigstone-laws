@@ -16,21 +16,22 @@ layout: default
       <ol type="a">
         {% for clause in law_clauses %}
           <li>
-            {% if clause.url %}
-              <a href="{{ clause.url | relative_url }}">{{ clause.title }}</a>
-            {% else %}
-              {{ clause.title }} (Link Error: Missing Clause URL)
-            {% endif %}
+            {% if clause.slug %} 
+              <a href="{{ '/law/clauses/' | append: clause.title | slugify }}">{{ clause.title }}</a>
 
+            {% else %}
+              {{ clause.title }} (Link Error: Missing Clause Slug)
+            {% endif %}
+            
             {% assign clause_subclauses = site.subclauses | where: "law", page.slug | where: "clause", clause.slug %}
             {% if clause_subclauses.size > 0 %}
               <ol type="i">
                 {% for subclause in clause_subclauses %}
                   <li>
-                    {% if subclause.url %}
-                      <a href="{{ subclause.url | relative_url }}">{{ subclause.title }}</a>
+                    {% if subclause.slug %}
+                      <a href="{{ '/laws/' | append: page.slug | append: '/' | append: clause.slug | append: '/' | append: subclause.slug | append: '/' | relative_url }}">{{ subclause.title }}</a>
                     {% else %}
-                      {{ subclause.title }} (Link Error: Missing Subclause URL)
+                      {{ subclause.title }} (Link Error: Missing Subclause Slug)
                     {% endif %}
                   </li>
                 {% endfor %}
@@ -41,6 +42,6 @@ layout: default
       </ol>
     {% endif %}
 
-    <p><a href="{{ '/laws/' | relative_url }}">← Back to all laws</a></p>
+    <p><a href="{{ 'laws.html' | relative_url }}">← Back to all laws</a></p>
   </article>
 </div>
