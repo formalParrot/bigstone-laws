@@ -8,7 +8,9 @@ layout: default
     {% if page.law %}
       <p class="post-meta">
         Part of: 
-        <a href="{{ '/laws/' | append: page.law | relative_url }}">{{ page.law | replace: '-', ' ' | capitalize }}</a>
+        <a href="{{ '/laws/' | append: page.law | relative_url }}">
+          {{ page.law | replace: '-', ' ' | capitalize }}
+        </a>
       </p>
     {% endif %}
   </header>
@@ -16,16 +18,18 @@ layout: default
   <article class="post-content">
     {{ content }}
 
-    {% assign clause_subclauses = site.subclauses | where: "law", page.law | where: "clause", page.slug %}
+    {% assign clause_subclauses = site.subclauses | where: "law", page.law | where: "clause", page.slug | sort: "order" %}
     {% if clause_subclauses.size > 0 %}
       <h2>Subclauses</h2>
       <ol type="i">
         {% for subclause in clause_subclauses %}
           <li>
             {% if subclause.url %}
-              <a href="{{ subclause.url | relative_url }}">{{ subclause.title }}</a>
+              <a href="{{ subclause.url | relative_url }}">
+                {{ subclause.title | default: subclause.slug }}
+              </a>
             {% else %}
-              {{ subclause.title }} (Link Error: Missing Subclause URL)
+              {{ subclause.title | default: subclause.slug }} (Link Error: Missing URL)
             {% endif %}
           </li>
         {% endfor %}

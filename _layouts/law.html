@@ -10,28 +10,31 @@ layout: default
   <article class="post-content">
     {{ content }}
 
-    {% assign law_clauses = site.clauses | where: "law", page.slug %}
+    {% assign law_clauses = site.clauses | where: "law", page.slug | sort: "order" %}
     {% if law_clauses.size > 0 %}
       <h2>Clauses</h2>
       <ol type="a">
         {% for clause in law_clauses %}
           <li>
-            {% if clause.slug %} 
-              <a href="{{ '/law/clauses/' | append: clause.title | slugify }}">{{ clause.title }}</a>
-
+            {% if clause.url %}
+              <a href="{{ clause.url | relative_url }}">
+                {{ clause.title | default: clause.slug }}
+              </a>
             {% else %}
-              {{ clause.title }} (Link Error: Missing Clause Slug)
+              {{ clause.title | default: clause.slug }} (Link Error: Missing URL)
             {% endif %}
-            
-            {% assign clause_subclauses = site.subclauses | where: "law", page.slug | where: "clause", clause.slug %}
+
+            {% assign clause_subclauses = site.subclauses | where: "law", page.slug | where: "clause", clause.slug | sort: "order" %}
             {% if clause_subclauses.size > 0 %}
               <ol type="i">
                 {% for subclause in clause_subclauses %}
                   <li>
-                    {% if subclause.slug %}
-                      <a href="{{ '/laws/' | append: page.slug | append: '/' | append: clause.slug | append: '/' | append: subclause.slug | append: '/' | relative_url }}">{{ subclause.title }}</a>
+                    {% if subclause.url %}
+                      <a href="{{ subclause.url | relative_url }}">
+                        {{ subclause.title | default: subclause.slug }}
+                      </a>
                     {% else %}
-                      {{ subclause.title }} (Link Error: Missing Subclause Slug)
+                      {{ subclause.title | default: subclause.slug }} (Link Error: Missing URL)
                     {% endif %}
                   </li>
                 {% endfor %}

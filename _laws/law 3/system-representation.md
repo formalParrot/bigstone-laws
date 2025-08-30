@@ -1,7 +1,6 @@
 ---
 title: Court System & Representation
 layout: law
-slug: system-representation
 order: 3
 ---
 

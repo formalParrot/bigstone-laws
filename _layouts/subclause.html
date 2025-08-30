@@ -8,9 +8,13 @@ layout: default
     <p class="post-meta">
       {% if page.law and page.clause %}
         Part of: 
-        <a href="{{ '/laws/' | append: page.law | relative_url }}">{{ page.law | replace: '-', ' ' | capitalize }}</a> 
-        → 
-        <a href="{{ '/laws/clauses/' | append: page.clause | relative_url }}">{{ page.clause | replace: '-', ' ' | capitalize }}</a>
+        <a href="{{ '/laws/' | append: page.law | relative_url }}">
+          {{ page.law | replace: '-', ' ' | capitalize }}
+        </a> 
+        →
+        <a href="{{ '/laws/clauses/' | append: page.clause | relative_url }}">
+          {{ page.clause | replace: '-', ' ' | capitalize }}
+        </a>
       {% endif %}
     </p>
   </header>
