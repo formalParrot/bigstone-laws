@@ -20,7 +20,7 @@ defendant_attorney: "aFormalParrot"
 
 # Description
 description_what: "Spionlennart griefed the public world on the community server, "
-description_when: "Lawsuit filed 24 August, 2025. Date of grief unknown"
+description_when: "Lawsuit filed 24 August, 2025. Date of grief is 24 August, 2025"
 description_where: "Public world on the community server, X:270; Z:0"
 
 # Reason for lawsuit
