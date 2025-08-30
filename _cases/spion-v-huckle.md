@@ -4,7 +4,7 @@ title: "SpionLennart v. TheHuckle"
 date: 2025-08-24
 
 # Verdict (appears at the top, default: Undefined)
-verdict: "2w of probation in GM3"
+verdict: "2w of probation in GM3 to SpionLennart"
 verdict_end: 2025-09-07
 
 # Court
