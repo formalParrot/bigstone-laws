@@ -7,6 +7,43 @@ layout: default
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">Filed: {{ page.date | date: "%B %d, %Y" }}</p>
     <p><strong>Final Verdict:</strong> {% if page.verdict %}{{ page.verdict }}{% else %}Undefined{% endif %}</p>
+
+    {% if page.verdict %}
+      {% if page.verdict_end == false %}
+        <p>Sanction issued. This sanction will not end.</p>
+      {% elsif page.verdict_end %}
+        {% assign today = 'now' | date: "%Y-%m-%d" %}
+        {% assign end = page.verdict_end | date: "%Y-%m-%d" %}
+
+        {% if today > end %}
+          <p>Sanction {{ page.verdict }} complete.</p>
+        {% else %}
+          <p id="verdict-countdown">
+            Sanction ongoing until {{ page.verdict_end | date: "%A, %d %B %Y" }}.
+          </p>
+          <script>
+            (function(){
+              const endDate = new Date("{{ page.verdict_end }}T23:59:59");
+              const el = document.getElementById("verdict-countdown");
+
+              function updateCountdown() {
+                const now = new Date();
+                const diff = endDate - now;
+                if (diff <= 0) {
+                  el.innerHTML = "Sanction complete.";
+                  return;
+                }
+                const days = Math.floor(diff / (1000*60*60*24));
+                el.innerHTML = `Sanction ongoing. ${days} day${days !== 1 ? 's' : ''} remaining (until {{ page.verdict_end | date: "%A, %d %B %Y" }}).`;
+              }
+
+              updateCountdown();
+              setInterval(updateCountdown, 86400000); // refresh daily
+            })();
+          </script>
+        {% endif %}
+      {% endif %}
+    {% endif %}
   </header>
 
   <section class="post-content">
@@ -55,7 +92,6 @@ layout: default
                     {{ e | split: "/" | last }}
                 </a>
             {% endif %}
-
           </li>
         {% endfor %}
       </ul>
@@ -66,7 +102,6 @@ layout: default
             {{ content }}
         </div>
     {% endif %}
-
 
     {% if page.notes %}
       <h2>Additional Notes</h2>
