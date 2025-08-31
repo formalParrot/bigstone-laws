@@ -18,9 +18,15 @@ The builders are the keepers of the courthouse and they keep the courthouse in s
 
 <!-- profiles -->
 {% for profile in site.data.profiles %}
+  {% if profile.avatar %}
+    {% assign avatar_url = profile.avatar %}
+  {% else %}
+    {% assign avatar_url = "https://cdn.discordapp.com/avatars/" | append: profile.discord_id | append: "/" | append: profile.avatar_id | append: ".png?size=160" %}
+  {% endif %}
+
   {% include profile.html 
-     name=profile.name 
-     username=profile.username 
-     description=profile.description 
-     avatar=profile.avatar %}
+    name=profile.name 
+    username=profile.username 
+    description=profile.description 
+    avatar=avatar_url %}
 {% endfor %}
