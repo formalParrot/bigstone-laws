@@ -1,14 +1,12 @@
 - name: aFormalParrot
   username: CrazyDuck24
-  description: Keeper of the courthouse, maker of website
-  avatar: https://cdn.discordapp.com/avatars/1008254028649607249/a01a7bb3544fbca364d3fd6441547789.png?size=160
+  description: Keeper of the courthouse, maker of website.
   discord_id: 1008254028649607249
   avatar_id: a01a7bb3544fbca364d3fd6441547789
 
 - name: MineKey98
   username: MineKey94
   description: Co-Builder of courthouse, maintainer of Bigstone Dev's weekly competitions.
-  avatar: https://cdn.discordapp.com/avatars/783091835295105055/967bea8289107cedd8543321771d5204.png?size=160
   discord_id: 783091835295105055
   avatar_id: 967bea8289107cedd8543321771d5204
 
