@@ -11,13 +11,13 @@ repository: artem22102013/bigstone-laws
 
 # Build settings
 theme: minima
-plugins:
 
 # Pages in the header navigation
 header_pages:
   - index.md
   - laws.md
   - cases.md
+  - events.html
 
 
 #Collections

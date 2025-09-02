@@ -7,6 +7,11 @@ date: 2025-08-24
 verdict: "2w of probation in GM3 to SpionLennart"
 verdict_end: 2025-09-07
 
+# Event
+event-happen: true
+event-date: 2025-08-24 15:30:00 +0300
+event-status: finished
+
 # Court
 judge: "ImTheSpyke!"
 jury:
