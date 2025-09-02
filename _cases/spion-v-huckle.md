@@ -9,7 +9,7 @@ verdict_end: 2025-09-07
 
 # Event
 event-happen: true
-event-date: 2025-08-24 15:30:00 +0300
+event-date: 2025-08-24 15:30:00 +0400
 event-status: finished
 
 # Court
