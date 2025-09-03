@@ -2,8 +2,6 @@
 layout: home
 title: "About"
 ---
-<!-- Bigstone DEV watermark -->
-<div style="position: fixed; bottom: 15px; left: 15px; opacity: 0.3; font-size: 12px; color: black; pointer-events: none; z-index: 9999; ">This is NOT maintained NOR officiated with Bigstone Development</div>
 
 <img src="assets/images/courthouse/def-vs-judge.png" alt="alternative" style="width: 840px; height: 600px;">
 

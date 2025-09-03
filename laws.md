@@ -1,11 +1,7 @@
 ---
-layout: default
+layout: home
 title: "Laws & Regulations"
 ---
-<!-- Bigstone DEV watermark -->
-<div style="position: fixed; bottom: 15px; left: 15px; opacity: 0.3; font-size: 12px; color: black; pointer-events: none; z-index: 9999; ">This is NOT maintained NOR officiated with Bigstone Development</div>
-
-# Laws & Regulations
 
 If you want to suggest new laws, make a submission by <a href="https://forms.gle/VgiwyBtcbrgjqe4j6" target="_blank" rel="noopener noreferrer">clicking here</a>
 
