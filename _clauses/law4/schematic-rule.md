@@ -5,4 +5,4 @@ law: punishments
 order: 1
 ---
 
-Players can preserve their builds before punishment. Staff support is not required. This rule balances enforcement with protection.
+Players can preserve their builds before punishment. Staff is not required to help. This rule balances enforcement with protection.
