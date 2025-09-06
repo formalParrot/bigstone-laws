@@ -5,8 +5,8 @@ discord: "https://discord.gg/MZ7hBU7GVV"
 
 law-application: "https://forms.gle/j8rxPPrwpbx6UVBWA"
 
-baseurl: "/bigstone-laws"
-url: "crazyh2.github.io"
+baseurl: ""
+url: "lawbook-par.bigstone.dev"
 repository: crazyh2/bigstone-laws
 
 # Build settings
