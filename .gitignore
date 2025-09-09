@@ -1,5 +1,17 @@
+# Ignore built site output
 _site
+
+# Ignore Sass cache
 .sass-cache
+
+# Ignore Jekyll cache
 .jekyll-cache
+
+# Ignore Jekyll metadata
 .jekyll-metadata
+
+# Ignore vendor dependencies
 vendor
+
+# Ignore environment variable files
+.env
