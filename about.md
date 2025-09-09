@@ -1,9 +1,10 @@
 ---
 layout: home
 title: "About"
+permalink: /about/
 ---
 
-<img src="assets/images/courthouse/def-vs-judge.png" alt="alternative" style="width: 840px; height: 600px;">
+<img src="../assets/images/courthouse/def-vs-judge.png" alt="alternative" style="width: 840px; height: 600px;">
 
 ## **What do we do?**
 This projects helps the bigstone community server have peace & justice. The real explanation for this project is so: `SpionLennart` was going to get banned. `Minekey98` built a small courthouse that helped ban the player in a really cool and chill way that seemed like real life. We do **not** want to have *full* roleplay on the server, but finding out the verdicts with a court case is really cool in our opinion.

@@ -13,7 +13,7 @@
 - name: cal
   username: Codeapotamus
   description: Co-Builder of courthouse, knows minecraft game mechanics better than anyone.
-  avatar: assets/images/discord_cal.png
+  avatar: ../assets/images/discord_cal.png
 
 - name: BastienA
   username: BastienA
