@@ -49,7 +49,7 @@ notes:
 
 ## Court Proceedings
 
-- Procedures unknown
+{% include court_proceedings.html %}
 
 ## Judge Remarks
 

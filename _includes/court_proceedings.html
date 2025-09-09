@@ -1,0 +1,223 @@
+<style>
+  /* CSS for the overlay */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+  }
+  .modal-content {
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  .close-button:hover,
+  .close-button:focus {
+    color: black;
+    text-decoration: none;
+  }
+  .media-container {
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .media-container img,
+  .media-container video {
+    max-width: 100%;
+    max-height: 100%;
+    transition: transform 0.2s; /* Smooth transition for zooming */
+  }
+  .ping-mention {
+    color: #5865F2; /* Discord's mention color */
+    background-color: rgba(88, 101, 242, 0.1);
+    font-weight: 500;
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+  .attachment-button {
+    cursor: pointer;
+    background-color: #5865F2;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    margin-right: 5px;
+  }
+  .zoom-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+  }
+  .zoom-controls button {
+    background-color: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+</style>
+
+<ul style="list-style: none; padding-left: 0;">
+  {% assign slug = page.path | split: '/' | last | split: '.' | first %}
+  {% assign messages = site.data.court_proceedings[slug] %}
+  {% for msg in messages %}
+    <li style="display: flex; align-items: flex-start; margin-bottom: 1em;">
+      <img src="{{ msg.avatar_url }}" alt="{{ msg.username }}'s avatar"
+           style="width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; object-fit: cover;">
+
+      <div>
+        <strong>{{ msg.username }}</strong>
+        <span style="color: #555; font-size: 0.85em;">
+          [{{ msg.timestamp | date: "%Y-%m-%d %H:%M" }}]
+        </span>
+        <div style="margin-top: 0.2em;">
+          {% if msg.content %}
+            {% assign rendered_content = msg.content %}
+            {% for user in msg.pinged_users %}
+              {% assign user_id_tag = '<@' | append: user.id | append: '>' %}
+              {% assign rendered_content = rendered_content | replace: user_id_tag, '<span class="ping-mention">@' | append: user.name | append: '</span>' %}
+            {% endfor %}
+            {{ rendered_content }}
+          {% endif %}
+        </div>
+
+        {% if msg.attachments %}
+          <div style="margin-top: 0.2em;">
+            {% for att in msg.attachments %}
+              {% assign full_filename = att | split: '/' | last %}
+              {% assign filename_without_query = full_filename | split: '?' | first %}
+              {% assign file_extension = filename_without_query | split: '.' | last | downcase %}
+              {% assign is_image = false %}
+              {% assign is_video = false %}
+              {% if file_extension == 'png' or file_extension == 'jpg' or file_extension == 'jpeg' or file_extension == 'gif' %}
+                {% assign is_image = true %}
+              {% elsif file_extension == 'mp4' or file_extension == 'webm' %}
+                {% assign is_video = true %}
+              {% endif %}
+              <button onclick="openModal('{{ att }}', '{{ is_image }}', '{{ is_video }}')" class="attachment-button">
+                View Attachment #{{ forloop.index }}
+              </button>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        {% if msg.embeds %}
+          <div style="margin-top: 0.2em; font-size: 0.9em; color: #333;">
+            {% for embed in msg.embeds %}
+              {% if embed.title %}<strong>{{ embed.title }}</strong>{% endif %}
+              {% if embed.url %} - <a href="{{ embed.url }}" target="_blank">{{ embed.url }}</a>{% endif %}
+              <br>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </li>
+  {% endfor %}
+</ul>
+
+<div id="mediaModal" class="modal">
+  <span class="close-button" onclick="closeModal()">&times;</span>
+  <div class="modal-content">
+    <div id="media-content" class="media-container"></div>
+    <div id="zoomControls" class="zoom-controls" style="display:none;">
+      <button onclick="zoomOut()">-</button>
+      <button onclick="zoomIn()">+</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let currentZoom = 1;
+  const zoomStep = 0.2;
+
+  function openModal(url, isImage, isVideo) {
+    const modal = document.getElementById("mediaModal");
+    const mediaContainer = document.getElementById("media-content");
+    const zoomControls = document.getElementById("zoomControls");
+    mediaContainer.innerHTML = ""; // Clear previous content
+    currentZoom = 1;
+
+    const isImageBool = isImage === 'true';
+    const isVideoBool = isVideo === 'true';
+
+    if (isImageBool) {
+      const img = document.createElement("img");
+      img.src = url;
+      mediaContainer.appendChild(img);
+      zoomControls.style.display = 'flex';
+    } else if (isVideoBool) {
+      const video = document.createElement("video");
+      video.src = url;
+      video.controls = true;
+      mediaContainer.appendChild(video);
+      zoomControls.style.display = 'flex';
+    } else {
+      const link = document.createElement("a");
+      link.href = url;
+      link.textContent = "Download File";
+      link.download = url.split('/').pop();
+      mediaContainer.appendChild(link);
+      zoomControls.style.display = 'none'; // Hide controls for non-media files
+    }
+
+    modal.style.display = "flex";
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("mediaModal");
+    modal.style.display = "none";
+    const mediaContainer = document.getElementById("media-content");
+    mediaContainer.innerHTML = "";
+  }
+
+  function zoomIn() {
+    currentZoom += zoomStep;
+    applyZoom();
+  }
+
+  function zoomOut() {
+    if (currentZoom > zoomStep) {
+      currentZoom -= zoomStep;
+      applyZoom();
+    }
+  }
+
+  function applyZoom() {
+    const media = document.querySelector("#media-content img, #media-content video");
+    if (media) {
+      media.style.transform = `scale(${currentZoom})`;
+    }
+  }
+
+  window.onclick = function(event) {
+    const modal = document.getElementById("mediaModal");
+    if (event.target === modal) {
+      closeModal();
+    }
+  }
+</script>
