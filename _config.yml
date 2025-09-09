@@ -14,7 +14,7 @@ theme: minima
 
 # Pages in the header navigation
 header_pages:
-  - index.md
+  - about.md
   - laws.md
   - cases.md
   - events.html
