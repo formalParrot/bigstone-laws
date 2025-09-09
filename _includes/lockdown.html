@@ -1,0 +1,17 @@
+<script>
+  (function () {
+    // Check if the site is being run locally
+    const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+
+    if (!isLocalhost) {
+      document.body.innerHTML = `
+        <div style="font-family: sans-serif; text-align: center; margin-top: 20vh;">
+          <h1>Project is unofficial</h1>
+          <p>If you want to see more of this, please say so to the staff.</p>
+          <p><em>I have been timed out.</em></p>
+        </div>
+      `;
+      document.body.style.background = "#fff";
+    }
+  })();
+</script>

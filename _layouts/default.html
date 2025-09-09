@@ -16,6 +16,11 @@
       </div>
     </main>
 
+    {% if jekyll.environment == "production" %}
+      {% include lockdown.html %}
+    {% endif %}
+
+
     {%- include footer.html -%}
 
   </body>
