@@ -50,7 +50,3 @@ notes:
 ## Court Proceedings
 
 {% include court_proceedings.html %}
-
-## Judge Remarks
-
-- Remarks unknown
