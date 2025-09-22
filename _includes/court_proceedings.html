@@ -1,12 +1,12 @@
 <style>
-  /* Role colors */
-  .role-judge { border-color: #1f77b4; background-color: white; color: #1f77b4; }
-  .role-jury { border-color: #ff7f0e; background-color: white; color: #ff7f0e; }
-  .role-plaintiff { border-color: #2ca02c; background-color: white; color: #2ca02c; }
-  .role-plaintiff-attorney { border-color: #d62728; background-color: white; color: #d62728; }
-  .role-defendant { border-color: #9467bd; background-color: white; color: #9467bd; }
-  .role-defendant-attorney { border-color: #8c564b; background-color: white; color: #8c564b; }
-  .role-witness { border-color: #e377c2; background-color: white; color: #e377c2; }
+  /* Role colors filled */
+  .role-judge { background-color: #1f77b4; }
+  .role-jury { background-color: #ff7f0e; }
+  .role-plaintiff { background-color: #2ca02c; }
+  .role-plaintiff-attorney { background-color: #d62728; }
+  .role-defendant { background-color: #9467bd; }
+  .role-defendant-attorney { background-color: #8c564b; }
+  .role-witness { background-color: #e377c2; }
 
   /* Circular role badge */
   .role-badge {
@@ -15,10 +15,10 @@
     margin-left: 5px;
     font-size: 0.75em;
     font-weight: bold;
-    border: 2px solid;
     border-radius: 50%;
     text-align: center;
     line-height: 1.2em;
+    color: white;
     white-space: nowrap;
   }
 
@@ -46,12 +46,7 @@
 
   {% for msg in messages %}
     {% unless msg.username contains "[System]" %}
-      {% assign uname = msg.username | remove: "<" | remove: ">" | split: " " %}
-      {% if uname.size > 1 %}
-        {% assign username_clean = uname[1] %}
-      {% else %}
-        {% assign username_clean = uname[0] %}
-      {% endif %}
+      {% assign username_clean = msg.username | strip %}
 
       {% assign roles = "" | split: "," %}
       {% if username_clean == page.judge %}{% assign roles = roles | push: "role-judge" %}{% endif %}
