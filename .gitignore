@@ -18,3 +18,7 @@ vendor
 
 # Ignore bot files
 /bot/
+
+# Temp files
+/_laws/
+.DS_Store
