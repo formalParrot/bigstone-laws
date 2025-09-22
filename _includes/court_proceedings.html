@@ -15,7 +15,7 @@
     margin-left: 5px;
     font-size: 0.75em;
     font-weight: bold;
-    border-radius: 50%;
+    border-radius: 12px; /* Changed from 50% to a specific pixel value for an oval shape */
     text-align: center;
     line-height: 1.2em;
     color: white;
@@ -39,7 +39,6 @@
   .zoom-controls button { background-color: #444; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 5px; }
 </style>
 
-<!-- Chat Messages with Circular Role Badges -->
 <ul class="court-messages">
   {% assign slug = page.path | split: '/' | last | split: '.' | first %}
   {% assign messages = site.data.court_proceedings[slug] %}
@@ -76,7 +75,6 @@
   {% endfor %}
 </ul>
 
-<!-- Modal for media -->
 <div id="mediaModal" class="modal">
   <span class="close-button" onclick="closeModal()">&times;</span>
   <div class="modal-content">
@@ -98,6 +96,20 @@ function openModal(url, isImage, isVideo) {
   const zoomControls = document.getElementById("zoomControls");
   mediaContainer.innerHTML = "";
   currentZoom = 1;
+
+  if (isImage) {
+    const img = document.createElement("img");
+    img.src = url;
+    mediaContainer.appendChild(img);
+    zoomControls.style.display = "flex";
+  } else if (isVideo) {
+    const video = document.createElement("video");
+    video.src = url;
+    video.controls = true;
+    mediaContainer.appendChild(video);
+    zoomControls.style.display = "none";
+  }
+
   modal.style.display = "flex";
 }
 
@@ -106,15 +118,29 @@ function closeModal() {
   document.getElementById("media-content").innerHTML = "";
 }
 
-function zoomIn() { currentZoom += zoomStep; applyZoom(); }
-function zoomOut() { if (currentZoom > zoomStep) { currentZoom -= zoomStep; applyZoom(); } }
+function zoomIn() {
+  currentZoom += zoomStep;
+  applyZoom();
+}
+
+function zoomOut() {
+  if (currentZoom > zoomStep) {
+    currentZoom -= zoomStep;
+    applyZoom();
+  }
+}
+
 function applyZoom() {
   const media = document.querySelector("#media-content img, #media-content video");
-  if (media) media.style.transform = `scale(${currentZoom})`;
+  if (media) {
+    media.style.transform = `scale(${currentZoom})`;
+  }
 }
 
 window.onclick = function(event) {
   const modal = document.getElementById("mediaModal");
-  if (event.target === modal) closeModal();
+  if (event.target === modal) {
+    closeModal();
+  }
 }
 </script>
