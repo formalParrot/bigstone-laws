@@ -1,19 +1,32 @@
 <style>
   /* Role colors */
-  .role-judge { color: #1f77b4; }
-  .role-jury { color: #ff7f0e; }
-  .role-plaintiff { color: #2ca02c; }
-  .role-plaintiff-attorney { color: #d62728; }
-  .role-defendant { color: #9467bd; }
-  .role-defendant-attorney { color: #8c564b; }
-  .role-witness { color: #e377c2; }
+  .role-judge { border-color: #1f77b4; background-color: white; color: #1f77b4; }
+  .role-jury { border-color: #ff7f0e; background-color: white; color: #ff7f0e; }
+  .role-plaintiff { border-color: #2ca02c; background-color: white; color: #2ca02c; }
+  .role-plaintiff-attorney { border-color: #d62728; background-color: white; color: #d62728; }
+  .role-defendant { border-color: #9467bd; background-color: white; color: #9467bd; }
+  .role-defendant-attorney { border-color: #8c564b; background-color: white; color: #8c564b; }
+  .role-witness { border-color: #e377c2; background-color: white; color: #e377c2; }
+
+  /* Circular role badge */
+  .role-badge {
+    display: inline-block;
+    padding: 2px 8px;
+    margin-left: 5px;
+    font-size: 0.75em;
+    font-weight: bold;
+    border: 2px solid;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1.2em;
+    white-space: nowrap;
+  }
 
   /* Chat messages styling */
   ul.court-messages { list-style: none; padding-left: 0; }
   ul.court-messages li { display: flex; align-items: flex-start; margin-bottom: 1em; }
   ul.court-messages img { width: 40px; height: 40px; border-radius: 50%; margin-right: 10px; object-fit: cover; }
-  ul.court-messages strong { font-weight: bold; margin-right: 5px; }
-  .role-label { font-weight: bold; margin-left: 5px; }
+  ul.court-messages strong { font-weight: bold; }
 
   /* Modal for media */
   .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.8); justify-content: center; align-items: center; }
@@ -26,11 +39,11 @@
   .zoom-controls button { background-color: #444; color: white; border: none; padding: 8px 12px; cursor: pointer; border-radius: 5px; }
 </style>
 
-<!-- Chat Messages with Inline Roles -->
+<!-- Chat Messages with Circular Role Badges -->
 <ul class="court-messages">
   {% assign slug = page.path | split: '/' | last | split: '.' | first %}
   {% assign messages = site.data.court_proceedings[slug] %}
-  
+
   {% for msg in messages %}
     {% unless msg.username contains "[System]" %}
       {% assign uname = msg.username | remove: "<" | remove: ">" | split: " " %}
@@ -40,24 +53,22 @@
         {% assign username_clean = uname[0] %}
       {% endif %}
 
-      {% comment %}Determine user role{% endcomment %}
-      {% assign role_class = "" %}
-      {% if username_clean == page.judge %}{% assign role_class = "role-judge" %}
-      {% elsif page.jury contains username_clean %}{% assign role_class = "role-jury" %}
-      {% elsif username_clean == page.plaintiff %}{% assign role_class = "role-plaintiff" %}
-      {% elsif username_clean == page.plaintiff_attorney %}{% assign role_class = "role-plaintiff-attorney" %}
-      {% elsif username_clean == page.defendant %}{% assign role_class = "role-defendant" %}
-      {% elsif username_clean == page.defendant_attorney %}{% assign role_class = "role-defendant-attorney" %}
-      {% elsif page.witnesses contains username_clean %}{% assign role_class = "role-witness" %}
-      {% endif %}
+      {% assign roles = "" | split: "," %}
+      {% if username_clean == page.judge %}{% assign roles = roles | push: "role-judge" %}{% endif %}
+      {% if page.jury contains username_clean %}{% assign roles = roles | push: "role-jury" %}{% endif %}
+      {% if username_clean == page.plaintiff %}{% assign roles = roles | push: "role-plaintiff" %}{% endif %}
+      {% if username_clean == page.plaintiff_attorney %}{% assign roles = roles | push: "role-plaintiff-attorney" %}{% endif %}
+      {% if username_clean == page.defendant %}{% assign roles = roles | push: "role-defendant" %}{% endif %}
+      {% if username_clean == page.defendant_attorney %}{% assign roles = roles | push: "role-defendant-attorney" %}{% endif %}
+      {% if page.witnesses contains username_clean %}{% assign roles = roles | push: "role-witness" %}{% endif %}
 
       <li>
         <img src="https://mc-heads.net/avatar/{{ username_clean }}" alt="{{ username_clean }}'s avatar">
         <div>
           <strong>{{ username_clean }}</strong>
-          {% if role_class %}
-            <span class="role-label {{ role_class }}">{{ role_class | remove: "role-" | replace: "-", " " | capitalize }}</span>
-          {% endif %}
+          {% for role in roles %}
+            <span class="role-badge {{ role }}">{{ role | remove: "role-" | replace: "-", " " | capitalize }}</span>
+          {% endfor %}
           {% if msg.timestamp %}
             <span style="color: #555; font-size: 0.85em;">[{{ msg.timestamp | date: "%Y-%m-%d %H:%M" }}]</span>
           {% endif %}
@@ -70,7 +81,7 @@
   {% endfor %}
 </ul>
 
-<!-- Modal for media (unchanged) -->
+<!-- Modal for media -->
 <div id="mediaModal" class="modal">
   <span class="close-button" onclick="closeModal()">&times;</span>
   <div class="modal-content">
