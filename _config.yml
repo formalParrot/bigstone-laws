@@ -6,8 +6,8 @@ discord: "https://discord.gg/MZ7hBU7GVV"
 law-application: "https://forms.gle/j8rxPPrwpbx6UVBWA"
 
 baseurl: "/bigstone-laws"
-url: "artem22102013.github.io"
-repository: artem22102013/bigstone-laws
+url: "formalParrot.github.io"
+repository: formalParrot/bigstone-laws
 
 # Build settings
 theme: minima
