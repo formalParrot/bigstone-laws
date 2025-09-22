@@ -11,7 +11,7 @@ title: "Events"
 </div>
 
 <ul id="events">
-  {% assign sorted_cases = site.cases | sort: "event-date" %}
+  {% assign sorted_cases = site.cases | sort: "date" %}
   
   {% for case in sorted_cases %}
     {% if case.event-happen == true %}
