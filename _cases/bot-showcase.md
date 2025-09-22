@@ -13,7 +13,7 @@ event-date: #YYYY-MM-DD HH:MM
  event-image: 
 
 # Court
-judge: ""
+judge: "CrazyDuck24"
 jury:
   # - ""
 
