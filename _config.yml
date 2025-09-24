@@ -5,9 +5,9 @@ discord: "https://discord.gg/MZ7hBU7GVV"
 
 law-application: "https://forms.gle/j8rxPPrwpbx6UVBWA"
 
-baseurl: "/bigstone-laws"
-url: "formalParrot.github.io"
-repository: formalParrot/bigstone-laws
+baseurl: "/"
+url: "lawbook-par.bigstone.dev"
+repository: crazyh2/bigstone-laws
 
 # Build settings
 theme: minima
