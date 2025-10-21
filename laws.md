@@ -7,7 +7,7 @@ If you want to suggest new laws, make a submission by <a href="https://forms.gle
 
 I was forced to put a link instead of rules here, thanks to SkyExploreWT (no hate):
 
-Rule's link: https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/refs/heads/master/rules-deed.MD
+[Rules (official ones)](https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/refs/heads/master/rules-deed.MD)
 
 <!--
 <ol>
