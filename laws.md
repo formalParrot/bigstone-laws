@@ -5,9 +5,11 @@ title: "Laws & Regulations"
 
 If you want to suggest new laws, make a submission by <a href="https://forms.gle/VgiwyBtcbrgjqe4j6" target="_blank" rel="noopener noreferrer">clicking here</a>
 
-These rules are an example of what the rules will look like. These rules aren't acceptable (since made by a player who has a two week ban) and *will* get changed quickly. We do **not** advice you to remember all of these rules because at the moment we are undergoing *serious* maintenance. We appreciate your patience.
+I was forced to put a link instead of rules here, thanks to SkyExploreWT (no hate):
 
+[Rules (official ones)](https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/refs/heads/master/rules-deed.MD)
 
+<!--
 <ol>
   {% assign sorted_laws = site.laws | sort: "order" %}
   {% for law in sorted_laws %}
@@ -38,3 +40,4 @@ These rules are an example of what the rules will look like. These rules aren't 
     </li>
   {% endfor %}
 </ol>
+-->
