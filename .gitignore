@@ -18,6 +18,7 @@ vendor
 
 # Ignore bot files
 /bot/
+/bot-js/
 
 # Temp files
 /_laws/
