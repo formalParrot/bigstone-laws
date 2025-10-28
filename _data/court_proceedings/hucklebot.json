@@ -1,0 +1,20 @@
+[
+    {
+        "timestamp": "2025-10-28T17:54:52.656Z",
+        "senderUUID": "9295824b69594804b43b836b22207399",
+        "senderName": "CrazyDuck24",
+        "message": "hello there"
+    },
+    {
+        "timestamp": "2025-10-28T17:54:59.938Z",
+        "senderUUID": "9295824b69594804b43b836b22207399",
+        "senderName": "CrazyDuck24",
+        "message": "aye it is working"
+    },
+    {
+        "timestamp": "2025-10-28T17:55:01.348Z",
+        "senderUUID": "9295824b69594804b43b836b22207399",
+        "senderName": "CrazyDuck24",
+        "message": "les go"
+    }
+]
