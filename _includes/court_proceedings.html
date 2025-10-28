@@ -44,8 +44,8 @@
   {% assign messages = site.data.court_proceedings[slug] %}
 
   {% for msg in messages %}
-    {% unless msg.username contains "[System]" %}
-      {% assign username_clean = msg.username | strip %}
+    {% unless msg.senderName contains "[System]" %}
+      {% assign username_clean = msg.senderName | strip %}
 
       {% assign roles = "" | split: "," %}
       {% if username_clean == page.judge %}{% assign roles = roles | push: "role-judge" %}{% endif %}
@@ -66,8 +66,8 @@
           {% if msg.timestamp %}
             <span style="color: #555; font-size: 0.85em;">[{{ msg.timestamp | date: "%Y-%m-%d %H:%M" }}]</span>
           {% endif %}
-          {% if msg.content %}
-            <div style="margin-top: 0.2em;">{{ msg.content }}</div>
+          {% if msg.message %}
+            <div style="margin-top: 0.2em;">{{ msg.message }}</div>
           {% endif %}
         </div>
       </li>
