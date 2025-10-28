@@ -46,6 +46,7 @@
   {% for msg in messages %}
     {% unless msg.senderName contains "[System]" %}
       {% assign username_clean = msg.senderName | strip %}
+      {% assign avatar_username = username_clean | downcase | replace: " ", "_" %}
 
       {% assign roles = "" | split: "," %}
       {% if username_clean == page.judge %}{% assign roles = roles | push: "role-judge" %}{% endif %}
@@ -57,7 +58,7 @@
       {% if page.witnesses contains username_clean %}{% assign roles = roles | push: "role-witness" %}{% endif %}
 
       <li>
-        <img src="https://mc-heads.net/avatar/{{ username_clean }}" alt="{{ username_clean }}'s avatar">
+        <img src="https://mc-heads.net/avatar/{{ avatar_username }}" alt="{{ username_clean }}'s avatar">
         <div>
           <strong>{{ username_clean }}</strong>
           {% for role in roles %}
