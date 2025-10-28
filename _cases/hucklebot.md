@@ -20,7 +20,7 @@ jury:
 
 # Parties
 plaintiff: ""
-plaintiff_attorney: ""
+plaintiff_attorney: "CrazyDuck24"
 defendant: ""
 defendant_attorney: ""
 
