@@ -3,7 +3,7 @@ name: Deploy Dev Branch to Pages
 on:
   push:
     branches:
-      - dev   # triggers on dev branch
+      - dev  # triggers on dev branch
 
 permissions:
   contents: read
@@ -26,7 +26,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./   # adjust if your site is in a subfolder
+          path: ./  # change if site is in subfolder
 
       - id: deployment
         uses: actions/deploy-pages@v4
