@@ -5,9 +5,22 @@ title: "Laws & Regulations"
 
 If you want to suggest new laws, make a submission by <a href="https://forms.gle/VgiwyBtcbrgjqe4j6" target="_blank" rel="noopener noreferrer">clicking here</a>
 
-I was forced to put a link instead of rules here, thanks to SkyExploreWT (no hate):
+Rules are being taken straight from this [link](https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/master/rules-deed.MD)
 
-[Rules (official ones)](https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/refs/heads/master/rules-deed.MD)
+<div id="rules" markdown="0"></div>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  fetch('https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/master/rules-deed.MD')
+    .then(res => res.text())
+    .then(text => {
+      document.getElementById('rules').innerHTML = marked.parse(text);
+    })
+    .catch(() => {
+      document.getElementById('rules').innerText = 'Failed to load rules.';
+    });
+});
+</script>
 
 <!--
 <ol>
