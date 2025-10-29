@@ -2,8 +2,10 @@
   (function () {
     // Check if the site is being run locally
     const isLocalhost = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+    // Allow when the URL path starts with "/DEVELOPER" (case-insensitive)
+    const isDeveloperPath = /^\/DEVELOPER(\/|$)/i.test(window.location.pathname);
 
-    if (!isLocalhost) {
+    if (!isLocalhost && !isDeveloperPath) {
       document.body.innerHTML = `
         <div style="font-family: sans-serif; text-align: center; margin-top: 20vh;">
           <h1>Visit the project at the domain</h1>
