@@ -19,6 +19,11 @@ header_pages:
   - cases.md
   - events.html
 
+defaults:
+  - scope:
+      path: "_cases"
+    values:
+      banner: "/assets/images/courthouse/def-vs-judge-defPOV.png"
 
 #Collections
 collections:
