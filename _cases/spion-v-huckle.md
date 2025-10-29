@@ -2,6 +2,7 @@
 layout: case
 title: "SpionLennart v. TheHuckle"
 date: 2025-08-24
+banner: 
 
 # Verdict (appears at the top, default: Undefined)
 verdict: "2w of probation in GM3 to SpionLennart"

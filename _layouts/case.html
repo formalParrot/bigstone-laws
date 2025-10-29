@@ -15,38 +15,38 @@ layout: default
 
     {% if page.verdict %}
       {% if page.verdict_end == false %}
-        <p>Sanction issued. This sanction will not end.</p>
+      <p style="color: red; font-weight: bold;">Sanction issued. This sanction will not end.</p>
       {% elsif page.verdict_end %}
-        {% assign today = 'now' | date: "%Y-%m-%d" %}
-        {% assign end = page.verdict_end | date: "%Y-%m-%d" %}
+      {% assign today = 'now' | date: "%Y-%m-%d" %}
+      {% assign end = page.verdict_end | date: "%Y-%m-%d" %}
 
-        {% if today > end %}
-          <p>Sanction {{ page.verdict }} complete.</p>
-        {% else %}
-          <p id="verdict-countdown">
-            Sanction ongoing until {{ page.verdict_end | date: "%A, %d %B %Y" }}.
-          </p>
-          <script>
-            (function(){
-              const endDate = new Date("{{ page.verdict_end }}T23:59:59");
-              const el = document.getElementById("verdict-countdown");
+      {% if today > end %}
+        <p style="color: red; font-weight: bold;">Sanction {{ page.verdict }} complete.</p>
+      {% else %}
+        <p id="verdict-countdown" style="color: red; font-weight: bold;">
+        Sanction ongoing until {{ page.verdict_end | date: "%A, %d %B %Y" }}.
+        </p>
+        <script>
+        (function(){
+          const endDate = new Date("{{ page.verdict_end }}T23:59:59");
+          const el = document.getElementById("verdict-countdown");
 
-              function updateCountdown() {
-                const now = new Date();
-                const diff = endDate - now;
-                if (diff <= 0) {
-                  el.innerHTML = "Sanction complete.";
-                  return;
-                }
-                const days = Math.floor(diff / (1000*60*60*24));
-                el.innerHTML = `Sanction ongoing. ${days} day${days !== 1 ? 's' : ''} remaining (until {{ page.verdict_end | date: "%A, %d %B %Y" }}).`;
-              }
+          function updateCountdown() {
+          const now = new Date();
+          const diff = endDate - now;
+          if (diff <= 0) {
+            el.innerHTML = "<span style='color: red; font-weight: bold;'>Sanction complete.</span>";
+            return;
+          }
+          const days = Math.floor(diff / (1000*60*60*24));
+          el.innerHTML = `<span style='color: red; font-weight: bold;'>Sanction ongoing. ${days} day${days !== 1 ? 's' : ''} remaining (until {{ page.verdict_end | date: "%A, %d %B %Y" }}).</span>`;
+          }
 
-              updateCountdown();
-              setInterval(updateCountdown, 86400000); // refresh daily
-            })();
-          </script>
-        {% endif %}
+          updateCountdown();
+          setInterval(updateCountdown, 86400000); // refresh daily
+        })();
+        </script>
+      {% endif %}
       {% endif %}
     {% endif %}
   </header>
