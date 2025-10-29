@@ -3,6 +3,9 @@ layout: case
 title: "Huckle's Bot Testing"
 date: 2025-10-28
 
+# Banner
+banner:
+
 # Verdict (appears at the top, default: Undefined)
 verdict: ""
 verdict_end: #YYYY-MM-DD
@@ -33,7 +36,7 @@ description_where: ""
 reason: ""
 
 # Requested Outcome
-outcome: ""
+outcome: 
 
 # Witnesses
 witnesses:
