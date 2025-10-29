@@ -11,7 +11,7 @@ verdict: ""
 verdict_end: #YYYY-MM-DD
 
 # Event information
-event-happen: 
+event-happen: false
 event-date: #YYYY-MM-DD HH:MM
 event-status: in-progress #either "finished", "in-progress", or "non-finished"
 event-image: 
