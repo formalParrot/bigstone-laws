@@ -3,11 +3,15 @@ layout: default
 ---
 
 <article class="post">
+  {% assign default_banner = "/assets/cases/default-banner.png" %}
   {% if page.banner %}
-    <div class="case-banner">
-      <img src="{{ page.banner | prepend: site.baseurl }}" alt="{{ page.title }} banner">
-    </div>
+    {% assign banner_src = page.banner | prepend: site.baseurl %}
+  {% else %}
+    {% assign banner_src = default_banner | prepend: site.baseurl %}
   {% endif %}
+  <div class="case-banner">
+    <img src="{{ banner_src }}" alt="{{ page.title | escape }} banner">
+  </div>
   <header class="post-header">
     <h1 class="post-title">{{ page.title }}</h1>
     <p class="post-meta">Filed: {{ page.date | date: "%B %d, %Y" }}</p>
