@@ -1,4 +1,4 @@
-title: Bigstone Lawbook
+title: Bigstone Courthouse
 descrpition: "A collection of laws for the Bigstone server."
 
 discord: "https://discord.gg/TgbpaAVsMJ"
@@ -14,16 +14,17 @@ theme: minima
 
 # Pages in the header navigation
 header_pages:
-  - about.md
-  - laws.md
-  - cases.md
-  - events.html
+  - pages/about.md
+  - pages/rules.md
+  - pages/cases.md
+  - pages/events.html
 
 defaults:
   - scope:
-      path: "_cases"
+      path: "pages"
+      type: "pages"
     values:
-      banner: "/assets/images/courthouse/def-vs-judge-defPOV.png"
+      layout: 
 
 #Collections
 collections:

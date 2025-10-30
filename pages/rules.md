@@ -1,6 +1,6 @@
 ---
 layout: home
-title: "Laws & Regulations"
+title: "Rules"
 ---
 
 If you want to suggest new laws, make a submission by <a href="https://forms.gle/VgiwyBtcbrgjqe4j6" target="_blank" rel="noopener noreferrer">clicking here</a>
