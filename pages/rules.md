@@ -3,24 +3,79 @@ layout: home
 title: "Rules"
 ---
 
-If you want to suggest new laws, make a submission by <a href="https://forms.gle/VgiwyBtcbrgjqe4j6" target="_blank" rel="noopener noreferrer">clicking here</a>
+<p>Rules are being taken straight from this <a href="https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/master/rules-deed.MD" target="_blank">link</a></p>
 
-Rules are being taken straight from this [link](https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/master/rules-deed.MD)
+<p> These rules are SkyExploreWasTaken's rules, and any questions about it, please open a support ticket at <a href="https://discord.com/channels/1382094887004147833/1425887720181600318">this channel</a>.</p>
 
-<div id="rules" markdown="0"></div>
+<div id="rules-container">
+  <p id="loading-text">Loading rules...</p>
+  <div id="rules" markdown="0" style="display:none;"></div>
+</div>
+
+<!-- Marked library for parsing Markdown -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
 <script>
 window.addEventListener('DOMContentLoaded', () => {
+  const rulesDiv = document.getElementById('rules');
+  const loadingText = document.getElementById('loading-text');
+
   fetch('https://raw.githubusercontent.com/SkyExploreWasTaken/bigstone-rules/master/rules-deed.MD')
     .then(res => res.text())
     .then(text => {
-      document.getElementById('rules').innerHTML = marked.parse(text);
+      const DELAY_SECONDS = .4;
+      setTimeout(() => {
+        rulesDiv.innerHTML = marked.parse(text);
+        loadingText.style.display = 'none';
+        rulesDiv.style.display = 'block';
+      }, DELAY_SECONDS * 1000); // Convert seconds to milliseconds
     })
     .catch(() => {
-      document.getElementById('rules').innerText = 'Failed to load rules.';
+      setTimeout(() => {
+        loadingText.innerText = 'Failed to load rules.';
+      }, DELAY_SECONDS * 1000);
     });
 });
 </script>
+
+<style>
+/* Mini page style */
+#rules-container {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Loading text */
+#loading-text {
+  font-style: italic;
+  color: #555;
+  text-align: center;
+}
+
+/* Markdown headings smaller than page title */
+#rules h1 {
+  font-size: 1.5em; /* smaller than your page title */
+  margin-top: 1em;
+}
+#rules h2 {
+  font-size: 1.3em;
+  margin-top: 0.9em;
+}
+#rules h3 {
+  font-size: 1.1em;
+  margin-top: 0.8em;
+}
+
+/* Optional: style links in rules */
+#rules a {
+  color: #0366d6;
+  text-decoration: underline;
+}
+</style>
 
 <!--
 <ol>
