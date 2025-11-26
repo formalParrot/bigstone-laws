@@ -23,3 +23,11 @@ vendor
 # Temp files
 /_laws/
 .DS_Store
+
+# Ignore user files
+/user/
+/user-js/
+
+# Ignore git shortcuts
+commit.command
+push.command

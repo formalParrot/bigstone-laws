@@ -1,7 +1,7 @@
 title: Bigstone Courthouse
 descrpition: "A collection of laws for the Bigstone server."
 
-lockdown: false
+lockdown: true
 
 discord: "https://discord.gg/TgbpaAVsMJ"
 
