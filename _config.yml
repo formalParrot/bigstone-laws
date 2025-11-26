@@ -1,6 +1,8 @@
 title: Bigstone Courthouse
 descrpition: "A collection of laws for the Bigstone server."
 
+lockdown: false
+
 discord: "https://discord.gg/TgbpaAVsMJ"
 
 law-application: "https://forms.gle/j8rxPPrwpbx6UVBWA"
@@ -24,7 +26,7 @@ defaults:
       path: "pages"
       type: "pages"
     values:
-      layout: 
+      layout:
 
 #Collections
 collections:
